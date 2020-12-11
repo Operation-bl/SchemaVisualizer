@@ -1,0 +1,47 @@
+<template>
+    <div class="slds-is-relative">
+        <lightning-card variant="Narrow">
+            <lightning-spinner if:true={isBusy} size="medium"></lightning-spinner>
+            <lightning-layout multiple-rows="true" horizontal-align="center">
+
+                <lightning-layout-item padding="around-small" size="6">
+                    <lightning-combobox name="s-object-options" label="SObject" placeholder="Select SObject..."
+                        options={sObjectOptions} onchange={handleSObjectChange}></lightning-combobox>
+                </lightning-layout-item>
+
+                <lightning-layout-item if:true={sObjectApiName} padding="around-small" size="12">
+                    <lightning-card variant="Narrow">
+                        <h3 slot="title">
+                            <div class="slds-icon_small slds-m-right_x-small icon"
+                                style={sObjectDescribe.iconStyle}></div>
+                            <lightning-formatted-text value={sObjectDescribe.label}></lightning-formatted-text>
+                        </h3>
+
+                        <div class="slds-p-horizontal_medium">
+                            <lightning-input type="text" label="API Name" value={sObjectDescribe.apiName} readonly>
+                            </lightning-input>
+                            <lightning-input type="text" label="Key Prefix" value={sObjectDescribe.keyPrefix} readonly>
+                            </lightning-input>
+                            <lightning-input type="toggle" label="Is Custom" checked={sObjectDescribe.isCustom}
+                                disabled message-toggle-active="" message-toggle-inactive=""></lightning-input>
+                            <lightning-input type="toggle" label="Is Queryable" checked={sObjectDescribe.isQueryable}
+                                disabled message-toggle-active="" message-toggle-inactive=""></lightning-input>
+                            <lightning-input type="toggle" label="Is Updateable" checked={sObjectDescribe.isUpdateable}
+                                disabled message-toggle-active="" message-toggle-inactive=""></lightning-input>
+                            <lightning-input type="toggle" label="Is Accessible" checked={sObjectDescribe.isAccessible}
+                                disabled message-toggle-active="" message-toggle-inactive=""></lightning-input>
+                        </div>
+                    </lightning-card>
+
+                </lightning-layout-item>
+
+                <lightning-layout-item if:true={sObjectApiName} padding="around-small" size="12">
+                    <lightning-datatable key-field="name" data={fieldsData} columns={fieldsDataColumnsDescribe}
+                        sorted-by="label" hide-checkbox-column>
+                    </lightning-datatable>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </lightning-card>
+    </div>
+</template>

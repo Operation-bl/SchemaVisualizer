@@ -5,5 +5,5 @@ After that run the following commands:
 * sfdx force:org:create --definitionfile config/project-scratch-def.json -a SchemaVisualizerDemo --setdefaultusername
 * sfdx force:source:push -f -g
 * sfdx force:org:open
-&nbsp; That commands will create new scratch org, push there the code, and after that - it will open up in your default browser.
+  That commands will create new scratch org, push there the code, and after that - it will open up in your default browser.
 Open "Apps", type "Schema Visualizer" and click the option to open tap with component to test.
